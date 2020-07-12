@@ -1,0 +1,12 @@
+{
+    "businessNewsSeeker" :  {
+        "name" : "Business News Seeker",
+        "description" : "Business News Seeker Segment",
+        "expression" : "businessPageVisitsCount > 2"
+    },
+    "businessNewsSubscriber" :  {
+        "name" : "Business News Subscriber",
+        "description" : "Business News Subscriber Segment",
+        "expression" : "subscribedNewsApplications.contains( \"Business\" )"
+    }
+}   

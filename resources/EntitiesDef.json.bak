@@ -1,0 +1,12 @@
+{
+    "Customer" :  {
+        "name" : "Customer",
+        "description" : "Customer",
+        "id" : "customerId"
+    },
+    "Airline" :  {
+        "name" : "Airline",
+        "description" : "Airline",
+        "id" : "airline"    
+    }
+}    

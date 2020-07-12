@@ -1,0 +1,8 @@
+{
+    "frequentSingaporeFlier" :  {
+        "name" : "Singapore Frequent Flier",
+        "description" : "Travels to Singapore Fraquenty",
+        "expression" : "singaporeTravelCount > 2",
+        "entity" : ["Customer"]
+    }
+}   

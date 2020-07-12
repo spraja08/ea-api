@@ -1,0 +1,9 @@
+{
+    "travelAddOnCampaign" :  {
+        "name" : "Singapore Travel Add-on",
+        "description" : "Provide discounted Add-on package for Singaopre Frequent Fliers",
+        "segmentCriteria" : "frequentSingaporeFlier",
+        "action" : "campaign",
+        "message" : "Feed Magnificent Asian Elephants at Night Safari Singapore. Usual Rp 10,000. Discounted : Rp 5,000"
+    }
+}   

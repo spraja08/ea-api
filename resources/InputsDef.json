@@ -1,0 +1,32 @@
+{
+    "FlightBooking" :  {
+        "name" : "Flight Booking",
+        "event" : "String",
+        "customerId" : "String",
+        "timestamp" : "long",
+        "origin" : "String",
+        "latitude" : "double",
+        "longitude" : "double",
+        "destination" : "String",
+        "departureTime" : "long",
+        "airline" : "String",
+        "flightId" : "String",
+        "amount" : "double",
+        "paymentMode" : "String"
+    },
+    "TrainBooking" : {
+        "name" : "Train Booking",
+        "event" : "String",
+        "customerId" : "String",
+        "timestamp" : "long",
+        "latitude" : "double",
+        "longitude" : "double",
+        "origin" : "String",
+        "destination" : "String",
+        "departureTime" : "long",
+        "operator" : "String",
+        "coachId" : "String",
+        "amount" : "double",
+        "paymentMode" : "String"
+    }
+}   

@@ -1,0 +1,9 @@
+{
+    "businessNewsCampaign" :  {
+        "name" : "Business News Upsell Campaign",
+        "description" : "Provide discounted business times subscription",
+        "segmentCriteria" : "businessNewsSeeker",
+        "action" : "campaign",
+        "message" : "Please subscribe to BusinessTimes for 50% discount. Please click https://www.sphsubscription.com.sg/eshop/?r=products/newsubscriptionpackages&pcode=bt"
+    }
+}   

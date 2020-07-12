@@ -1,0 +1,10 @@
+{
+    "pageVisits" :  {
+        "name" : "Page Visits",
+        "recordType" : "String",
+        "customerId" : "String",
+        "timestamp" : "long",
+        "pageURL" : "String",
+        "newsCategory" : "String"
+    }
+}   

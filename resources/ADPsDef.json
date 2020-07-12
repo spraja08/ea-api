@@ -1,0 +1,50 @@
+{
+    "flightsBookingCount" :  {
+        "name" : "Flights Booking Count",
+        "description" : "Count of Flight Booking Transactions",
+        "expression" : "flightsBookingCount + 1",
+        "expressionType" : "int",
+        "events" : ["FlightBooking"],
+        "entity" : ["Customer","ThamrinCity"]
+    },
+    "trainsBookingCount" :  {
+        "name" : "Trains Booking Count",
+        "description" : "Count of Train Booking Transactions",
+        "expression" : "trainsBookingCount + 1",
+        "expressionType" : "int",
+        "events" : ["TrainBooking"],
+        "entity" : ["Customer","ThamrinCity"]
+    },
+    "singaporeTravelCount" :  {
+        "name" : "Singapore Travel Count",
+        "description" : "Number of Travels to Singapore",
+        "expression" : "destination.equals( \"Singapore\" ) ? singaporeTravelCount + 1 : singaporeTravelCount",
+        "expressionType" : "int",
+        "events" : ["FlightBooking"],
+        "entity" : ["Customer"]
+    },
+    "preferredTransport" :  {
+        "name" : "Preferred Transport",
+        "description" : "Most Booked Transport Type",
+        "expression" : "( trainsBookingCount > flightsBookingCount ) ? \"Trains\" : \"Flights\"",
+        "expressionType" : "String",
+        "events" : ["TrainBooking", "FlightBooking"],
+        "entity" : ["Customer"]
+    },
+    "discountPercent" :  {
+        "name" : "ML Predicted Discount",
+        "description" : "ML Predicted Discount",
+        "expression" : "EA.invokeSageMakerModel( flightsBookingCount, \"ea-discounts-regression-v1\" )",
+        "expressionType" : "double",
+        "events" : ["FlightBooking"],
+        "entity" : ["Customer"]
+    },
+    "saleValue" :  {
+        "name" : "Ticket Sale Value for the Flights",
+        "description" : "Total Ticket Sale Value for the Flights",
+        "expression" : "saleValue + amount",
+        "expressionType" : "double",
+        "events" : ["FlightBooking"],
+        "entity" : ["Airline"]
+    }
+}   

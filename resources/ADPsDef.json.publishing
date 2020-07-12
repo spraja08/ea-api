@@ -1,0 +1,14 @@
+{
+    "businessPageVisitsCount" :  {
+        "name" : "Business Page Visits Count",
+        "description" : "Count of the business page visits",
+        "expression" : "recordType.equals( \"pageVisits\" ) && newsCategory.equals( \"Business\" ) ? businessPageVisitsCount + 1 : businessPageVisitsCount",
+        "expressionType" : "int"
+    },
+    "subscribedNewsApplications" :  {
+        "name" : "Subscribed News Apps",
+        "description" : "List of newspapers subscribed to",
+        "expression" : "\"StraitsTimes\"",
+        "expressionType" : "String"
+    }
+}   
