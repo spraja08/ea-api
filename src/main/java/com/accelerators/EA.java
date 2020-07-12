@@ -1,7 +1,12 @@
+/**
+* SageMaker API Invocation interface
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import java.nio.ByteBuffer;
-
 import com.amazonaws.services.sagemakerruntime.AmazonSageMakerRuntime;
 import com.amazonaws.services.sagemakerruntime.AmazonSageMakerRuntimeClientBuilder;
 import com.amazonaws.services.sagemakerruntime.model.InvokeEndpointRequest;

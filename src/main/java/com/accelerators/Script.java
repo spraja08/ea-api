@@ -1,3 +1,9 @@
+/**
+* Represents a 'cooked' snippet
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import java.lang.reflect.InvocationTargetException;

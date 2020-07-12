@@ -1,3 +1,9 @@
+/**
+* REST API for managing States
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import java.io.IOException;

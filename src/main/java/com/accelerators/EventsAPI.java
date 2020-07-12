@@ -1,3 +1,9 @@
+/**
+* REST API managing Event Definitions
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import java.io.IOException;

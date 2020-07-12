@@ -1,3 +1,9 @@
+/**
+* Holds the definitions of all building blocks and snippets 
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import java.io.*;

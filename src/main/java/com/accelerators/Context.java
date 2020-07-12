@@ -1,3 +1,9 @@
+/**
+* Holds the context for the expression evaluation
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import java.util.HashSet;

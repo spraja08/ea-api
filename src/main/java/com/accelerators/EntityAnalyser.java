@@ -1,3 +1,9 @@
+/**
+* Executes snippets for ADPs and States
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import java.io.IOException;

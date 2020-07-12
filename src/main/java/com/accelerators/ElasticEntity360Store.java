@@ -1,3 +1,10 @@
+
+/**
+* ElasticSearch API interface
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import org.apache.http.HttpHost;

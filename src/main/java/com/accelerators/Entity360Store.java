@@ -1,3 +1,9 @@
+/**
+* Internal Cache for holding entity 360s
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import java.io.IOException;

@@ -1,3 +1,9 @@
+/**
+* Java Lexer
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import org.antlr.v4.runtime.Lexer;

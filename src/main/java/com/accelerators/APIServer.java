@@ -1,3 +1,9 @@
+/**
+* REST API - Restlet main entry point
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import org.restlet.Component;

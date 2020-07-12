@@ -1,3 +1,9 @@
+/**
+* REST API managing entities
+*
+* @author  Raja SP
+*/
+
 package com.accelerators;
 
 import com.google.gson.JsonObject;
