@@ -23,7 +23,7 @@ public class APIServer {
         component.getDefaultHost().attach("/api/v1", new APIApplication());
 
         ElasticEntity360Store.elasticSearchIP = args[1];
-        ElasticEntity360Store.elasticSearchPort = Integer.parseInt( args[2]);
+        ElasticEntity360Store.elasticSearchPort = Integer.parseInt(args[2]);
 
         EA.initialise();
         //initialse the application

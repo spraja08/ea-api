@@ -35,8 +35,10 @@ public class EntityAnalyser extends ServerResource {
         JsonObject incomingEvent = null;
         JsonObject result = new JsonObject();
         try {
-            System.out.println("POST Called - " + entity.toString());
-            incomingEvent = (JsonObject) JsonParser.parseString(entity.getText());
+            String text = entity.getText().toString();
+            System.out.println("POST Called - " + text );
+            System.out.println("Parsed Output Called - " + JsonParser.parseString(text).getAsJsonObject() );
+            incomingEvent = JsonParser.parseString(text).getAsJsonObject();
         } catch (JsonSyntaxException e1) {
             e1.printStackTrace();
             result.addProperty("status", "FAILED");
