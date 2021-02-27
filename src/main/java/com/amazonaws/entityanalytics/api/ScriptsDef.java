@@ -6,7 +6,11 @@
 
 package com.amazonaws.entityanalytics.api;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,14 +19,10 @@ import java.util.Set;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import org.apache.http.HttpHost;
 import org.codehaus.commons.compiler.CompileException;
-import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestClient;
-import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 
 public class ScriptsDef {
@@ -31,8 +31,10 @@ public class ScriptsDef {
 
     private static JsonObject adps;
     private static JsonObject states;
+    private static JsonObject triggers;
     private static JsonObject events;
     private static JsonObject entities;
+    private static Map< String, Map< String, Set< String > > > entityMappedToADPs;
 
     public static void initalise( String resourcePath ) throws IOException, CompileException {
 
@@ -40,7 +42,14 @@ public class ScriptsDef {
         adps = (JsonObject) JsonParser.parseString(content);
 
         content = readFile(resourcePath + "/StatesDef.json");
-        states = (JsonObject) JsonParser.parseString(content);
+        if( content.trim().length() > 0 )
+            states = (JsonObject) JsonParser.parseString(content);
+        else states = new JsonObject();    
+
+        content = readFile(resourcePath + "/TriggersDef.json");
+        if( content.trim().length() > 0 )
+            triggers = (JsonObject) JsonParser.parseString(content);
+        else triggers = new JsonObject();   
 
         content = readFile( resourcePath + "/InputsDef.json");
         events = (JsonObject) JsonParser.parseString(content);
@@ -55,6 +64,10 @@ public class ScriptsDef {
 
         request.id( "states" );
         request.source( states.toString(), XContentType.JSON );
+        indexResponse = ElasticEntity360Store.getClient().index(request, RequestOptions.DEFAULT);
+
+        request.id( "triggers" );
+        request.source( triggers.toString(), XContentType.JSON );
         indexResponse = ElasticEntity360Store.getClient().index(request, RequestOptions.DEFAULT);
 
         request.id( "events" );
@@ -73,6 +86,8 @@ public class ScriptsDef {
             return adps;
         else if( buildingBlock.equals( "states" ) )
             return states;    
+        else if( buildingBlock.equals( "triggers" ) )
+            return triggers;  
         else if( buildingBlock.equals( "events" ) )
             return events;  
         else if( buildingBlock.equals( "entities" ) )
@@ -85,6 +100,8 @@ public class ScriptsDef {
             return adps.get( id ).getAsJsonObject();
         else if( buildingBlock.equals( "states" ) )
             return states.get( id ).getAsJsonObject();  
+        else if( buildingBlock.equals( "triggers" ) )
+            return triggers.get( id ).getAsJsonObject();  
         else if( buildingBlock.equals( "events" ) )
             return events.get( id ).getAsJsonObject();
         else if( buildingBlock.equals( "entities" ) )
@@ -124,6 +141,20 @@ public class ScriptsDef {
         while (itr.hasNext()) {
             String key = itr.next();
             JsonObject jObj = states.get(key).getAsJsonObject();
+            Script script = new Script( key, jObj.get("expression").getAsString(), "boolean" );
+            try {
+                script.initalise();
+                scriptsMap.put( key, script );
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        JsonObject triggers = get("triggers");
+        keys = states.keySet();
+        itr = keys.iterator();
+        while (itr.hasNext()) {
+            String key = itr.next();
+            JsonObject jObj = triggers.get(key).getAsJsonObject();
             Script script = new Script( key, jObj.get("expression").getAsString(), "boolean" );
             try {
                 script.initalise();

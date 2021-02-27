@@ -94,11 +94,12 @@ public class Script {
 
         // determine if this is an expression or a snippet
         // cook and keep
+        System.out.println( "Compiling Script : " + this.toString() );
         if (script.split(";").length > 1) {
             se = new ScriptEvaluator();
             se.setDefaultImports( new String[] { "com.google.gson.*", "com.amazonaws.entityanalytics.api.*" } );
             se.setParameters(paramNamesArray, paramDataTypesArray);
-            ee.setExpressionType(returnTypeClass);
+            se.setReturnType(returnTypeClass);
             se.cook(this.script);
             scriptOrExp = "script";
         } else {
@@ -176,6 +177,7 @@ public class Script {
         }catch( ClassNotFoundException ex ) {
             ex.printStackTrace();
         }
+        System.out.println( "Not able to find match stringToType. Returning Null");
         return null;
     }
 
@@ -293,4 +295,11 @@ public class Script {
             return se.evaluate( values );
 		return ee.evaluate( values );
 	}
+
+    @Override
+    public String toString() {
+        return "Script [ee=" + ee + ", id=" + id + ", paramDataTypes=" + paramDataTypes + ", paramNames=" + paramNames
+                + ", paramTypes=" + paramTypes + ", returnType=" + returnType + ", returnTypeClass=" + returnTypeClass
+                + ", script=" + script + ", scriptOrExp=" + scriptOrExp + ", se=" + se + "]";
+    }
 }

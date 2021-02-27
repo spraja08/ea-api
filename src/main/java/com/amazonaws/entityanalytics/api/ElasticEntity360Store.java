@@ -20,22 +20,20 @@ public class ElasticEntity360Store {
     public static int elasticSearchPort;
 
     private ElasticEntity360Store() {
-        client = new RestHighLevelClient(
-            RestClient.builder( new HttpHost(elasticSearchIP, elasticSearchPort, "http")));
-            try {
-                DeleteIndexRequest deleteRequest = new DeleteIndexRequest("config"); 
-                client.indices().delete(deleteRequest, RequestOptions.DEFAULT);
-                deleteRequest = new DeleteIndexRequest("entity360"); 
-                client.indices().delete(deleteRequest, RequestOptions.DEFAULT);
-            }
-            catch( Exception e ) {
-                e.printStackTrace();
-            }
+        client = new RestHighLevelClient(RestClient.builder(new HttpHost(elasticSearchIP, elasticSearchPort, "http")));
+        try {
+            DeleteIndexRequest deleteRequest = new DeleteIndexRequest("config");
+            client.indices().delete(deleteRequest, RequestOptions.DEFAULT);
+            deleteRequest = new DeleteIndexRequest("entity360");
+            client.indices().delete(deleteRequest, RequestOptions.DEFAULT);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static RestHighLevelClient getClient() {
-        if( instance == null )
+        if (instance == null)
             instance = new ElasticEntity360Store();
-        return instance.client;    
+        return instance.client;
     }
 }
